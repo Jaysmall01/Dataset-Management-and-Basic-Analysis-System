@@ -1,4 +1,110 @@
 # Dataset Management and Basic Analysis System
+# -----------------------------
+# FUNCTIONS
+# -----------------------------
+
+def calculate_total(data):
+    total = 0
+    for value in data:
+        total = total + value
+    return total
+
+
+def calculate_average(data):
+    return calculate_total(data) / len(data)
+
+
+def calculate_minimum(data):
+    minimum = data[0]
+    for value in data:
+        if value < minimum:
+            minimum = value
+    return minimum
+
+
+def calculate_maximum(data):
+    maximum = data[0]
+    for value in data:
+        if value > maximum:
+            maximum = value
+    return maximum
+
+
+# -----------------------------
+# CLASS
+# -----------------------------
+
+class DataSet:
+    def __init__(self):
+        self.data = []
+        self.categories = set()
+
+    def load_data(self):
+        try:
+            file = open("numeric_data.csv", "r")
+            for line in file:
+                values = line.split(",")
+                for v in values:
+                    self.data.append(float(v))
+            file.close()
+        except:
+            print("Error reading numeric file")
+            return False
+
+        try:
+            file = open("categories.txt", "r")
+            for line in file:
+                self.categories.add(line.strip())
+            file.close()
+        except:
+            print("Error reading category file")
+            return False
+
+        return True
+
+    def calculate_statistics(self):
+        self.total = calculate_total(self.data)
+        self.average = calculate_average(self.data)
+        self.minimum = calculate_minimum(self.data)
+        self.maximum = calculate_maximum(self.data)
+
+    def display_results(self):
+        print("Total:", self.total)
+        print("Average:", self.average)
+        print("Minimum:", self.minimum)
+        print("Maximum:", self.maximum)
+
+        if self.average > 50:
+            print("High Performance")
+        else:
+            print("Needs Improvement")
+
+        print("Unique Categories:", len(self.categories))
+
+    def save_report(self):
+        file = open("report.txt", "w")
+        file.write("Total: " + str(self.total) + "\n")
+        file.write("Average: " + str(self.average) + "\n")
+        file.write("Minimum: " + str(self.minimum) + "\n")
+        file.write("Maximum: " + str(self.maximum) + "\n")
+        file.write("Unique Categories: " + str(len(self.categories)))
+        file.close()
+
+
+# -----------------------------
+# MAIN PROGRAM
+# -----------------------------
+
+dataset = DataSet()
+
+if dataset.load_data():
+    dataset.calculate_statistics()
+    dataset.display_results()
+    dataset.save_report()
+
+
+
+
 
 ## Abstract
 
