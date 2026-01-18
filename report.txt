@@ -1,0 +1,8 @@
+Dataset Analysis Report
+------------------------
+Total: 528.0
+Average: 66.0
+Minimum: 39.0
+Maximum: 91.0
+Performance: High Performance
+Unique Categories Count: 4
