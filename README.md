@@ -210,9 +210,3 @@ Include the following screenshots in this section when submitting or presenting 
 ## Conclusion
 
 This project demonstrates a clear and practical approach to basic dataset management and analysis using Python. It reinforces foundational programming concepts and provides a reusable framework for simple data analysis tasks in academic settings.
-
----
-
-## License
-
-This project is intended strictly for educational purposes.
